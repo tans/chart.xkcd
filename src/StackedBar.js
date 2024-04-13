@@ -147,7 +147,7 @@ class StackedBar {
       .attr('x', (d, i) => xScale(this.data.labels[i % dataLength]))
       .attr('width', xScale.bandwidth())
       .attr('y', (d, i) => yScale(d + offsets[i]))
-      .attr('height', (d) => this.height - yScale(d))
+      .attr('height', (d) => {return d==0? 0 : this.height - yScale(d) })
       .attr('fill', (d, i) => this.options.dataColors[Math.floor(i / dataLength)])
       .attr('pointer-events', 'all')
       .attr('stroke', this.options.strokeColor)
